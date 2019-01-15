@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Carter+One');
+
+.top-bar {
+    background-color: #5e5e5e;
+    color: #ffffff;
+    min-height: 30px;
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
+    align-content: stretch;
+}
+
+.top-element {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    border-right: solid 1px;
+}
+
+.main-nav {
+    height: 60px;
+    min-height: 30px;
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
+    align-content: stretch;
+}
+
+.main-nav-element {
+    font-size: 18px;
+    color: #000000;
+    padding-left: 20px;
+    padding-right: 20px; 
+    border-right: solid 1px;
+    text-decoration: none;
+}
+
+.logo {
+    /* font-family: 'Permanent Marker', cursive; */
+    font-family: 'Carter One', cursive;
+    font-size: 35px;
+    padding-right: 50px;
+    color: #090932;
+    white-space: nowrap;
+}
