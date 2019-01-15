@@ -3,13 +3,6 @@ import routes from './routes';
 // import logo from './logo.svg';
 import TopNav from './components/TopNav/TopNav';
 import StoreFront from './components/StoreFront/StoreFront';
-import Products from './components/Products/Products';
-import Details from './components/Details/Details';
-import Cart from './components/Cart/Cart';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import Checkout from './components/Checkout/Checkout';
-import Payment from './components/Payment/Payment';
 // import './App.css';
 
 class App extends Component {
@@ -17,7 +10,8 @@ class App extends Component {
     return (
       <div>
         <TopNav />
-        {/* <StoreFront />
+        {/* 
+        <StoreFront />
         <Products />
         <Details />
         <Cart />
