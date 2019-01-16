@@ -1,0 +1,22 @@
+.container {
+    height: 50vh;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+    align-content: stretch;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+}
+
+.categories {
+    font-size: 24px;
+    text-align: center;
+}
+
+.img-cat {
+    width: 175px;
+    height: 175px;
+}
