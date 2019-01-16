@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './storeFront.scss'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import grill from './../../images/classic-red-cart-poly_03_1-450x450.jpg';
 import smoker from './../../images/traegerjr-330x330.jpg';
 import rubs from './../../images/Honey_Hog.jpg';
@@ -26,16 +26,18 @@ export default class StoreFront extends Component {
                         Grills
                     </div>
                     <div className='categories'>
-                        <Link to='/products/3' >
+                        <Link to='/products/3' className='links'>
                             <img className='img-cat' src={rubs} alt="" />
-                            <p />
-                            Rubs
+                            <p className='cat-text'>
+                                Rubs
+                            </p>
                         </Link>
                     </div>
                     <div className='categories'>
                         <img className='img-cat' src={sauce} alt="" />
-                        <p />
-                        Sauces
+                        <p>
+                            Sauces
+                        </p>
                     </div>
                 </div>
             </div>

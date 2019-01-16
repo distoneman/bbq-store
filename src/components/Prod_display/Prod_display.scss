@@ -1,0 +1,21 @@
+.product {
+    width: 250px;
+    margin-bottom:30px;
+}
+
+.image{
+    height: 250px;
+    width: 250px;
+}
+
+.prod-title {
+    text-align: center;
+    word-wrap: normal;
+    // line-height: 0rem;
+
+}
+
+.prod-price {
+    @extend .prod-title;
+    color: red;
+}

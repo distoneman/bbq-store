@@ -71,13 +71,20 @@
     z-index: 1;
 }
 
+
 .sub-nav-element {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
+    float: none;
+    color: black;
+    padding: 6px 16px 6px 0px;
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    text-align: left;
+}
+
+.links{
+    @extend .sub-nav-element;
+    text-decoration: none;
 }
 
 /* Add a dark background on topnav links and the dropdown button on hover */

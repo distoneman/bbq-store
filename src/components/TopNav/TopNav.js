@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
 import './top_nav.scss'
-import bbqBeef from './../../images/barbecue-bbq-beef.jpg'
 
 export default function TopNav(props) {
     return (
@@ -28,10 +26,18 @@ export default function TopNav(props) {
                         <Link to='/products' className='dropdown'>
                             <li>Shop
                         <ul className='shop-sub-nav'>
-                                    <li className='sub-nav-element'>Smokers</li>
-                                    <li className='sub-nav-element'>Grills</li>
-                                    <li className='sub-nav-element'>Rubs</li>
-                                    <li className='sub-nav-element'>Sauces</li>
+                                    <Link to='/products/2' className='links'>
+                                        <li className='sub-nav-element'>Smokers</li>
+                                    </Link>
+                                    <Link to='/products/1' className='links'>
+                                        <li className='sub-nav-element'>Grills</li>
+                                    </Link>
+                                    <Link to='/products/3' className='links'>
+                                        <li className='sub-nav-element'>Rubs</li>
+                                    </Link>
+                                    <Link to='/products/4' className='links'>
+                                        <li className='sub-nav-element'>Sauces</li>
+                                    </Link>
                                     {/* <div className='sub-nav-element'>Accessories</div> */}
                                 </ul>
                             </li>
@@ -49,18 +55,6 @@ export default function TopNav(props) {
                 </div>
             </div>
             <hr />
-            <ul className='shop-sub-nav'>
-                <Link to='./products'>
-                    <li className='sub-nav-element'>Smokers</li>
-                </Link>
-                <li className='sub-nav-element'>Grills</li>
-                <li className='sub-nav-element'>Rubs</li>
-                <li className='sub-nav-element'>Sauces</li>
-                {/* <div className='sub-nav-element'>Accessories</div> */}
-            </ul>
-            {/* <div className='pic-container'>
-                <img className='home-pic' src={bbqBeef} alt="barbecue meat"/>
-            </div> */}
         </div>
     )
 }
