@@ -14,7 +14,7 @@ import AccountInfo from './components/AccountInfo/AccountInfo'
 export default (
     <Switch>
         <Route exact path='/' component={StoreFront} />
-        <Route path='/products' component={Products} />
+        <Route path='/products/:catid' component={Products} />
         <Route path='/details' component={Details} />
         <Route path='/cart' component={Cart} />
         <Route path='/login' component={Login} />
