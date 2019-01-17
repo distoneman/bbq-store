@@ -17,6 +17,7 @@ massive(CONNECTION_STRING).then(connection => {
 
 //endpoints
 app.get('/api/products/cat/:catid', ctrl.getProdCategory);
-// app.get('/api/product/brand/:brandid', ctrl.getProdBrand)
+// app.get('/api/product/brand/:brandid', ctrl.getProdBrand);
+app.get('/api/product/:prodid', ctrl.getOneProduct);
 
 

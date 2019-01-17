@@ -17,15 +17,17 @@ export default class StoreFront extends Component {
                 <div className='container'>
                     <div className='categories'>
                         <img className='img-cat' src={smoker} alt="" />
-                        <p />
-                        Smokers
+                        <p className='cat-text'>
+                            Smokers
+                        </p>
                     </div>
-                    <div className='categories'>
+                    <div>
                         <img className='img-cat' src={grill} alt="" />
-                        <p />
-                        Grills
+                        <p className='cat-text'>
+                            Grills
+                        </p>
                     </div>
-                    <div className='categories'>
+                    <div>
                         <Link to='/products/3' className='links'>
                             <img className='img-cat' src={rubs} alt="" />
                             <p className='cat-text'>
@@ -35,7 +37,7 @@ export default class StoreFront extends Component {
                     </div>
                     <div className='categories'>
                         <img className='img-cat' src={sauce} alt="" />
-                        <p>
+                        <p className='cat-text'>
                             Sauces
                         </p>
                     </div>

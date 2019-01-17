@@ -15,7 +15,7 @@ export default (
     <Switch>
         <Route exact path='/' component={StoreFront} />
         <Route path='/products/:catid' component={Products} />
-        <Route path='/details' component={Details} />
+        <Route path='/details/:prodid' component={Details} />
         <Route path='/cart' component={Cart} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />

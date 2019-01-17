@@ -25,6 +25,8 @@ class Products extends Component {
         // console.log(this.state.products)
         let productList = this.state.products.map(product => {
             const price = product.prod_price.toLocaleString('us-US', {style: 'currency', currency: 'USD'})
+            const prodUrl = `/details/${product.prod_id}`
+            // console.log(prodUrl);
             return (
                     <Prod_display
                         key={product.prod_id}
@@ -32,6 +34,7 @@ class Products extends Component {
                         prod_name={product.prod_name}
                         prod_price={price}
                         prod_image={product.prod_image}
+                        prod_url = {prodUrl}
                     />
             )
         })

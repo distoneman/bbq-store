@@ -16,7 +16,13 @@ module.exports = {
     //         res.status(200).send(response)
     //     })
     // },
-
+    getOneProduct: (req, res) => {
+        const db = req.app.get('db')
+        const prodid = req.params.prodid
+        db.product_id({prodid}).then(response => {
+            res.status(200).send(response)
+        })
+    }
     
 
 }

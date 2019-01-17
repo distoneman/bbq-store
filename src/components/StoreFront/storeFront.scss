@@ -11,16 +11,17 @@
     padding-top: 50px;
 }
 
-.categories {
+.cat-text{
     font-size: 24px;
     text-align: center;
     color: #000000;
 }
 
 .links{
-    @extend .categories;
+    @extend .cat-text;
     text-decoration: none;
 }
+
 
 .img-cat {
     width: 175px;
