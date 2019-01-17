@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './products.scss'
 import { withRouter } from 'react-router-dom';
-import Prod_display from './../Prod_display/Prod_display.js';
+import ProdDisplay from './../ProdDisplay/ProdDisplay.js';
 
 class Products extends Component {
     constructor(props) {
@@ -14,12 +14,21 @@ class Products extends Component {
 
     componentDidMount() {
         const { catid } = this.props.match.params;
-        console.log(catid);
+        // console.log(catid);
         axios.get(`/api/products/cat/${catid}`).then(res => {
             this.setState({ products: res.data });
         });
     }
 
+    componentDidUpdate(prevProp){
+        const { catid } = this.props.match.params;
+        if(prevProp.match.params.catid !== this.props.match.params.catid)
+        {
+            axios.get(`/api/products/cat/${catid}`).then(res => {
+                this.setState({ products: res.data });
+            });
+        }
+    }
 
     render() {
         // console.log(this.state.products)
@@ -28,7 +37,7 @@ class Products extends Component {
             const prodUrl = `/details/${product.prod_id}`
             // console.log(prodUrl);
             return (
-                    <Prod_display
+                    <ProdDisplay
                         key={product.prod_id}
                         id={product.prod_id}
                         prod_name={product.prod_name}

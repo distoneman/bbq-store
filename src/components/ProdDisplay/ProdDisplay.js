@@ -1,5 +1,5 @@
 import React from 'react';
-import './Prod_display.scss';
+import './ProdDisplay.scss';
 import { Link } from 'react-router-dom';
 
 export default function Prod_display(props) {
@@ -10,7 +10,7 @@ export default function Prod_display(props) {
                 <p className='prod-title'>
                     {props.prod_name}
                 </p>
-                <p className='prod-price'>
+                <p className='price'>
                     {props.prod_price}
                 </p>
             </Link>

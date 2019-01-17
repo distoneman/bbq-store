@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './top_nav.scss'
 
-export default function TopNav(props) {
+function TopNav(props) {
     return (
         <div>
             <div className='top-bar'>
@@ -23,8 +23,8 @@ export default function TopNav(props) {
                         <Link to='/' className='main-nav-element'>
                             <li>Home</li>
                         </Link>
-                        <Link to='/products' className='dropdown'>
-                            <li>Shop
+                        {/* <Link to='/products' className='dropdown'> */}
+                            <li className='dropdown'>Shop
                         <ul className='shop-sub-nav'>
                                     <Link to='/products/2' className='links'>
                                         <li className='sub-nav-element'>Smokers</li>
@@ -41,7 +41,7 @@ export default function TopNav(props) {
                                     {/* <div className='sub-nav-element'>Accessories</div> */}
                                 </ul>
                             </li>
-                        </Link>
+                        {/* </Link> */}
                         <Link to='/recipes' className='main-nav-element'>
                             <li>Recipes</li>
                         </Link>
@@ -58,3 +58,5 @@ export default function TopNav(props) {
         </div>
     )
 }
+
+export default TopNav

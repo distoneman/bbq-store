@@ -22,7 +22,7 @@ module.exports = {
         db.product_id({prodid}).then(response => {
             res.status(200).send(response)
         })
-    }
+    },
     
 
 }

@@ -1,5 +1,6 @@
 .container {
     height: 50vh;
+    background-color: #ffffff;
     display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -17,13 +18,16 @@
     color: #000000;
 }
 
-.links{
+.prod-links{
     @extend .cat-text;
     text-decoration: none;
+    background-color: #ffffff;
 }
-
 
 .img-cat {
     width: 175px;
     height: 175px;
+}
+.prod_links:hover {
+    background-color: #ffffff;
 }

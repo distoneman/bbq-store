@@ -11,6 +11,10 @@ export default class StoreFront extends Component {
         super(props)
     }
 
+    componentDidMount(
+        
+    )
+
     render() {
         return (
             <div>
@@ -28,18 +32,20 @@ export default class StoreFront extends Component {
                         </p>
                     </div>
                     <div>
-                        <Link to='/products/3' className='links'>
+                        <Link to='/products/3' className='prod-links'>
                             <img className='img-cat' src={rubs} alt="" />
                             <p className='cat-text'>
                                 Rubs
                             </p>
                         </Link>
                     </div>
-                    <div className='categories'>
-                        <img className='img-cat' src={sauce} alt="" />
-                        <p className='cat-text'>
-                            Sauces
-                        </p>
+                    <div>
+                        <Link to='./products/4' className='prod-links'>
+                            <img className='img-cat' src={sauce} alt="" />
+                            <p className='cat-text'>
+                                Sauces
+                            </p>
+                        </Link>
                     </div>
                 </div>
             </div>
