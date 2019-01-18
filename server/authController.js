@@ -35,11 +35,11 @@ module.exports = {
         const db = req.app.get('db');
         const custArr = await db.cust_find_email({email: email});
         if(!custArr[0]) {
-            return res.status(200).send({message:'Email not found.', noEmail: true});
+            return res.status(200).send({message:'Email not found.', noEmail:true});
         }
         const result = bcrypt.compareSync(password, custArr[0].cust_hash)
         if(!result) {
-            return res.status(401).send({message: 'Password Incorrect', wrongPass: true});
+            return res.status(200).send({message: 'Password Incorrect', wrongPass: true});
         }
         req.session.user = {id: custArr[0].cust_id, email: custArr[0].cust_email}
         res.status(200).send({message: 'logged in', userData: req.session.user, loggedIn: true});

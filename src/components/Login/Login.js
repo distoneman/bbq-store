@@ -9,23 +9,22 @@ export default class Login extends Component {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
         }
     }
 
     async login() {
-        console.log('login function')
         const { email, password } = this.state;
         const res = await axios.post('/auth/login', {
             email: email,
-            password: password
+            password: password,
         })
-        if(res.data.noEmail){
+        if (res.data.noEmail) {
             alert('Email not found, try again or register')
         }
-       if(res.data.wrongPass){
-           alert('Wrong Password')
-       }
+        if (res.data.wrongPass) {
+            alert('Wrong Password')
+        }
         if (res.data.loggedIn) {
             alert('You are now logged in')
             // this.props.history.push('/')  //redirect
@@ -38,7 +37,7 @@ export default class Login extends Component {
         return (
             <div>
                 <p className="login-title">
-                    Sign In or Create An Account
+                    Sign In or Create an Account
                 </p>
                 <div className='login-container'>
                     <div className="login-box">
@@ -51,12 +50,12 @@ export default class Login extends Component {
                         <p className="input-label">
                             Email Address:
                         </p>
-                        <input onChange={(e) => this.setState({ email: e.target.value })} 
+                        <input onChange={(e) => this.setState({ email: e.target.value })}
                             type="text" className="input-box" />
                         <p className="input-label">
                             Password:
                         </p>
-                        <input onChange={(e) => this.setState({ password: e.target.value })} 
+                        <input onChange={(e) => this.setState({ password: e.target.value })}
                             type="password" className="input-box" />
                         <p>
                             <Button onClick={() => this.login()} variant="outlined" size="small" className='btn-login' >
