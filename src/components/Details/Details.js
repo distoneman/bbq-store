@@ -19,7 +19,14 @@ export default class Details extends Component {
     }
 
     updateQuantity(operator) {
-
+        let qty = this.state.quantity;
+        if(operator === 'minus' & this.state.quantity > 1){
+            qty = qty -1;
+            this.setState({quantity: qty})
+        } else if(operator === 'add') {
+            qty++
+            this.setState({quantity: qty})
+        }
     }
 
     render() {
@@ -43,11 +50,13 @@ export default class Details extends Component {
                             Price: {price}
                         </p>
                         <p>
-                            <span>
-                                Quantity: &nbsp;
-                                <button className='btn-quantity'>-</button>
-                                <input className='input-quantity' type="text" value={this.state.quantity} />
-                                <button className='btn-quantity'>+</button>
+                            Quantity: &nbsp;
+                            <span className='qty-span'>
+                                <button onClick={(e) => this.updateQuantity('minus')}
+                                    className='btn-quantity'>-</button>
+                                <input className='input-quantity' type="text" value={this.state.quantity}  readonly/>
+                                <button onClick={(e) => this.updateQuantity('add')}
+                                    className='btn-quantity'>+</button>
                             </span>
                         </p>
                     </div>

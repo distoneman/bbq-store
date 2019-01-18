@@ -37,6 +37,9 @@ $fontColor: #2f2f2f;
     font-family: $font;
     color: $fontColor;
 }
+.qty-span {
+    white-space: pre;
+}
 
 .input-quantity {
     width: 2em;

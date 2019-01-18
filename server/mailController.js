@@ -15,7 +15,7 @@ module.exports = {
         const mailOptions = {
             from: EMAIL_ADDRESS,
             to: `${req.body.email}`,
-            subject: `${req.body.name}`,
+            subject: `${req.body.subject}`,
             text: `${req.body.message}`,
             html: `${req.body.html_message}`,
             replyTo: EMAIL_ADDRESS

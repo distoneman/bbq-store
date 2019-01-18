@@ -23,7 +23,21 @@ export default class Register extends Component {
         })
         if(res.data.loggedIn){
             alert('You are now registered')
-            console.log(res.data.userData);
+
+            // const {firstname, lastname, email} = res.data.userData;
+            console.log(firstname)
+            const message = `<h1>Welcome ${firstname} to The BBQ Store</h1>
+                This confirms your registration to The BBQ Store with the
+                email address of ${email}.
+                <p>
+                Thank you for registering.
+                </p>`
+            const res = axios.post('/mail/send', {
+                email: email,
+                firstname: firstname,
+                subject: `You're now registered at The BBQ Store`,
+                html_message: message
+            })
             this.props.history.push('/')  //redirect
         }
         if(res.data.inUse){
