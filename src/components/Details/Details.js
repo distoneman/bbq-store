@@ -30,19 +30,20 @@ export default class Details extends Component {
         }
     }
 
-    addToCart() {
-        console.log('Add to Cart Hit');
+    async addToCart() {
         let quantity = this.state.quantity;
         let prod_id = this.state.product.prod_id;
-        console.log(quantity);
-        console.log(prod_id);
+        let cart = await axios.post('/cart/addItem', {
+            prod_id: prod_id,
+            quantity: quantity
+        })
+        console.log(cart)
     }
 
 
     render() {
         const { prod_name, prod_desc, prod_price, prod_size, prod_image } = this.state.product;
         if (prod_price) var price = prod_price.toLocaleString('us-US', { style: 'currency', currency: 'USD' })
-        console.log(this.state)
         return (
             <div>
                 <div className='product-container'>

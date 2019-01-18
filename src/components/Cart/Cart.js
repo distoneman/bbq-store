@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './cart.css'
+import './cart.scss'
 
 export default class Cart extends Component {
     constructor(props) {

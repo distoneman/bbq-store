@@ -3,9 +3,9 @@ const massive = require('massive');
 require('dotenv').config();
 const ctrl = require('./controller.js');
 const authCtrl = require('./authController.js');
-const mailCtrl = require('./mailController.js')
+const mailCtrl = require('./mailController.js');
+const cartCtrl = require('./cartController.js');
 const session = require('express-session');
-const nodemailer = require('nodemailer');
 
 const { SERVER_PORT, CONNECTION_STRING, SECRET, EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
 
@@ -38,3 +38,6 @@ app.post('/auth/login', authCtrl.login);
 //nodemailer endpoints
 app.post('/mail/send', mailCtrl.sendMail);
 
+//cart endpoints
+app.post('/cart/addItem', cartCtrl.addItem);
+app.get('/cart/user', cartCtrl.getSession)
