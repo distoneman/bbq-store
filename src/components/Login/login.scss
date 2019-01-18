@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+$font: 'Montserrat', sans-serif;
+$fontColor: #2f2f2f;
+
+.login-title {
+    font-family: $font;
+    font-weight: 700;
+    margin-left: 12vw;
+    font-size: 2em;
+    color: $fontColor;
+}
+
+.login-container {
+    font-family: $font;
+    color: $fontColor;
+    width: 70vw;
+    margin-left:15vw;
+    display: flex;
+    justify-content: center;
+}
+
+.login-boxes{
+    // extended by .login-box .register-box
+    width:400px;
+    border: solid 1px;
+    padding:5px; 
+}
+
+.login-box {
+    @extend .login-boxes;
+    margin-right: 5px;
+}
+
+.register-box {
+    @extend .login-boxes;
+    margin-left: 5px;
+}
+
+.login-box-text {
+    font-size: .75em;
+    padding-bottom: 1em;
+}
+
+.input-label {
+    font-size: .75em;
+    line-height: 0em;
+}
+
+.input-box {
+    width: 90%;
+    font-size: 1em;
+}
+

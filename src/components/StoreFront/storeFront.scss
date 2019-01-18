@@ -27,7 +27,12 @@
 .img-cat {
     width: 175px;
     height: 175px;
+    transition: all .2s ease-in-out;}
+
+.img-cat:hover{
+    transform: scale(1.25);
 }
+
 .prod_links:hover {
     background-color: #ffffff;
 }

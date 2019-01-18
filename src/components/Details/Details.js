@@ -7,27 +7,20 @@ export default class Details extends Component {
         super(props)
         this.state = {
             product: [],
-            quantity: 1
+            quantity: 1,
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const { prodid } = this.props.match.params;
-        axios.get(`/api/product/${prodid}`).then(res => {
+        let res = await axios.get(`/api/product/${prodid}`).then(res => {
             this.setState({ product: res.data[0] });
         })
     }
 
     render() {
-        // let prod = this.state.product.prod_name
         const { prod_name, prod_desc, prod_price, prod_size, prod_image } = this.state.product;
-        // const price = prod_price.toLocaleString('us-US', {style: 'currency', currency: 'USD'});
-        // console.log(prod_price)
-        // console.log(this.state.product.prod_price.toLocaleString('us-US', {style: 'currency', currency: 'USD'}))
-        // console.log(this.state.product)
-
-        // console.log(prod)
-        // console.log(this.state.product[0].prod_id)
+        if(prod_price)var price = prod_price.toLocaleString('us-US', {style: 'currency', currency: 'USD'})
 
         return (
             <div>
@@ -43,7 +36,7 @@ export default class Details extends Component {
                             Size: {prod_size}
                         </p>
                         <p className="prod-price">
-                            Price: ${prod_price}
+                            Price: {price}
                         </p>
                         <p>
                             <span>

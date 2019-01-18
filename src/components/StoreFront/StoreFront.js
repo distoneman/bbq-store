@@ -11,10 +11,6 @@ export default class StoreFront extends Component {
         super(props)
     }
 
-    componentDidMount(
-        
-    )
-
     render() {
         return (
             <div>

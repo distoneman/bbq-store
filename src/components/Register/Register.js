@@ -25,6 +25,9 @@ export default class Register extends Component {
             alert('You are now registered')
             this.props.history.push('/')  //redirect
         }
+        if(res.data.inUse){
+            alert('E-mail already in use try again')
+        }
     }
 
     handleChange = (key, val) => {

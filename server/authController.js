@@ -6,7 +6,7 @@ module.exports = {
         const db = req.app.get('db');
         const custArr = await db.cust_find_email({email:email})
         if(custArr.length >= 1) {
-            return res.status(200).send({message: "Email already in use."})
+            return res.status(200).send({message: "Email already in use.", inUse: true})
         } 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
