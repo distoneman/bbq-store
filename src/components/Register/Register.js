@@ -23,6 +23,7 @@ export default class Register extends Component {
         })
         if(res.data.loggedIn){
             alert('You are now registered')
+            console.log(res.data.userData);
             this.props.history.push('/')  //redirect
         }
         if(res.data.inUse){

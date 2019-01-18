@@ -20,7 +20,7 @@ module.exports = {
             id: newCust[0].cust_id,
             firstname: newCust[0].cust_firstname,
             lastname: newCust[0].cust_lastname,
-            email: newCust[0].acc_email
+            email: newCust[0].cust_email
         }
         // req.session.user = {
         //     id: 5,
