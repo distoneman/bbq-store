@@ -18,6 +18,10 @@ export default class Details extends Component {
         })
     }
 
+    updateQuantity(operator) {
+
+    }
+
     render() {
         const { prod_name, prod_desc, prod_price, prod_size, prod_image } = this.state.product;
         if(prod_price)var price = prod_price.toLocaleString('us-US', {style: 'currency', currency: 'USD'})
@@ -28,7 +32,7 @@ export default class Details extends Component {
                     <div>
                         <img src={prod_image} className='image' alt={prod_name} />
                     </div>
-                    <div>
+                    <div className='details-container'>
                         <h2 className='prod-name'>
                             {prod_name}
                         </h2>
@@ -41,9 +45,9 @@ export default class Details extends Component {
                         <p>
                             <span>
                                 Quantity: &nbsp;
-                                <button>-</button>
-                                <input type="text"/>
-                                <button>+</button>
+                                <button className='btn-quantity'>-</button>
+                                <input className='input-quantity' type="text" value={this.state.quantity} />
+                                <button className='btn-quantity'>+</button>
                             </span>
                         </p>
                     </div>

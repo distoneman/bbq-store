@@ -31,6 +31,7 @@ app.get('/api/product/:prodid', ctrl.getOneProduct);
 
 //auth endpoints
 app.post('/auth/register', authCtrl.register);
+app.post('/auth/login', authCtrl.login);
 
 
 
