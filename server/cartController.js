@@ -34,6 +34,12 @@ module.exports = {
         const index = req.session.cart.findIndex(prod => prod.prod_id == req.body.prod_id)
         req.session.cart[index].quantity = req.body.quantity;
         res.status(200).send(req.session.cart)
+    },
+
+    removeProduct: async(req, res) => {
+        const index = req.session.cart.findIndex(prod => prod.prod_id == req.params.prod_id);
+        req.session.cart.splice(index, 1);
+        res.status(200).send(req.session.cart);
     }
 
     // getCart: async (req, res) => {

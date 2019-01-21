@@ -11,8 +11,6 @@ export default function cartDisplay(props) {
             </td>
             <td>{props.name}</td>
             <td>{props.price}</td>
-            {/* <td>{props.quantity}</td> */}
-            {/* <span className='qty-span'> */}
             <td>
                 <button onClick={() => props.updateQuantity('minus', props.id, props.quantity)}
                     className='btn-quantity'>-</button>

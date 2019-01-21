@@ -39,13 +39,15 @@ export default class Cart extends Component {
 
     async removeProduct(id) {
         console.log('remove product')
+        let res = await axios.delete(`/cart/removeProduct/${id}`)
+        this.setState({ products: res.data })
+        console.log(this.state.products)
     }
 
     render() {
         var cartDisplay;
         var subTotal = 0;
         if (this.state.products) {
-
             cartDisplay = this.state.products.map(product => {
                 var prod_total = product.prod_price * product.quantity;
                 subTotal = subTotal + prod_total;
@@ -70,7 +72,6 @@ export default class Cart extends Component {
                 <p>
                 </p>
                 {this.state.products ? (
-
                     <table className='prod-table'>
                         <thead>
                             <tr>
@@ -86,7 +87,7 @@ export default class Cart extends Component {
                         </tbody>
                     </table>
                 ) : <h1>Your cart is currently empty</h1>
-            }
+                }
             </div>
         )
     }

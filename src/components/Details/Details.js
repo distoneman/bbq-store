@@ -41,7 +41,7 @@ export default class Details extends Component {
             prod_name: prod_name,
             prod_price: prod_price
         })
-        console.log(cart)
+        // console.log(cart)
     }
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './register.scss';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import { isUndefined, isNullOrUndefined } from 'util';
+import { isNullOrUndefined } from 'util';
 
 export default class Register extends Component {
     constructor(props) {

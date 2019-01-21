@@ -42,3 +42,4 @@ app.post('/mail/send', mailCtrl.sendMail);
 app.post('/cart/addItem', cartCtrl.addItem);
 app.get('/cart/session', cartCtrl.getSession);
 app.put('/cart/updateQty', cartCtrl.updateQty);
+app.delete('/cart/removeProduct/:prod_id', cartCtrl.removeProduct)
