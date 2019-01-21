@@ -25,9 +25,17 @@ module.exports = {
         }
         res.status(200).send(req.session.cart)
     },
+    
     getSession: async (req, res) => {
         res.status(200).send(req.session);
     },
+
+    updateQty: async(req, res) => {
+        const index = req.session.cart.findIndex(prod => prod.prod_id == req.body.prod_id)
+        req.session.cart[index].quantity = req.body.quantity;
+        res.status(200).send(req.session.cart)
+    }
+
     // getCart: async (req, res) => {
     //     res.status(200).send(req.session);
 }

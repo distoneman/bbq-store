@@ -44,6 +44,7 @@ class Products extends Component {
                         prod_price={price}
                         prod_image={product.prod_image}
                         prod_url = {prodUrl}
+                        update_quantity={this.update_quantity}
                     />
             )
         })
