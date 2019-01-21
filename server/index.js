@@ -40,4 +40,4 @@ app.post('/mail/send', mailCtrl.sendMail);
 
 //cart endpoints
 app.post('/cart/addItem', cartCtrl.addItem);
-app.get('/cart/user', cartCtrl.getSession)
+app.get('/cart/session', cartCtrl.getSession)

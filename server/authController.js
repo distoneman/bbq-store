@@ -41,7 +41,12 @@ module.exports = {
         if(!result) {
             return res.status(200).send({message: 'Password Incorrect', wrongPass: true});
         }
-        req.session.user = {id: custArr[0].cust_id, email: custArr[0].cust_email}
+        req.session.user = {
+            id: custArr[0].cust_id, 
+            email: custArr[0].cust_email,
+            firstname: custArr[0].cust_firstname,
+            lastname: custArr[0].cust_lastname
+        }
         res.status(200).send({message: 'logged in', userData: req.session.user, loggedIn: true});
     },
 }

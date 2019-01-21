@@ -27,5 +27,7 @@ module.exports = {
     },
     getSession: async (req, res) => {
         res.status(200).send(req.session);
-    }
+    },
+    // getCart: async (req, res) => {
+    //     res.status(200).send(req.session);
 }
