@@ -71,7 +71,7 @@ export default class Cart extends Component {
             <div className='container'>
                 <p>
                 </p>
-                {this.state.products ? (
+                {this.state.products && this.state.products != 0 ? (
                     <table className='prod-table'>
                         <thead>
                             <tr>

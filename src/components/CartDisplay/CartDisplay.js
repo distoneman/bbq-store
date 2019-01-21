@@ -1,7 +1,7 @@
 import React from 'react';
 // import './cart.scss';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 export default function cartDisplay(props) {
     return (

@@ -7,9 +7,9 @@ import rubs from './../../images/Honey_Hog.jpg';
 import sauce from './../../images/Blues_Hog_Original_sauce.jpg';
 
 export default class StoreFront extends Component {
-    constructor(props) {
-        super(props)
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
 
     render() {
         return (
