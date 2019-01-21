@@ -5,10 +5,9 @@ $fontColor: #2f2f2f;
 $backgroundColor: #f4e6d5;
 
 .prod-table {
-    // empty-cells: hide;
     font-family: $font;
     color: $fontColor;
-    border: solid 1px;
+    // border: solid 1px;
     width: 80vw;
     border-collapse:collapse;
     border-spacing:0;
@@ -25,8 +24,12 @@ $backgroundColor: #f4e6d5;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+
     }
 
+    .td-hidden {
+        border: none;
+    }
 
 }
 

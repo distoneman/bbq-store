@@ -47,6 +47,7 @@ export default class Cart extends Component {
     render() {
         var cartDisplay;
         var subTotal = 0;
+        var orderTotal = 0;
         if (this.state.products) {
             cartDisplay = this.state.products.map(product => {
                 var prod_total = product.prod_price * product.quantity;
@@ -66,11 +67,13 @@ export default class Cart extends Component {
                     />
                 )
             })
+            orderTotal = subTotal + 13.95;
+            orderTotal = orderTotal.toLocaleString('us-US', { style: 'currency', currency: 'USD' });
+
         }
+        console.log(subTotal)
         return (
             <div className='container'>
-                <p>
-                </p>
                 {this.state.products && this.state.products != 0 ? (
                     <table className='prod-table'>
                         <thead>
@@ -84,8 +87,30 @@ export default class Cart extends Component {
                         </thead>
                         <tbody>
                             {cartDisplay}
+                            <tr>
+                                <td className='td-hidden'></td>
+                                <td className='td-hidden'></td>
+                                <td className='td-hidden'></td>
+                                <td>Subtotal: </td>
+                                <td>{subTotal.toLocaleString('us-US', { style: 'currency', currency: 'USD' })}</td>
+                            </tr>
+                            <tr>
+                                <td className='td-hidden'></td>
+                                <td className='td-hidden'></td>
+                                <td className='td-hidden'></td>
+                                <td>Shipping:</td>
+                                <td>$13.95</td>
+                            </tr>
+                            <tr>
+                                <td className='td-hidden'></td>
+                                <td className='td-hidden'></td>
+                                <td className='td-hidden'></td>
+                                <td>Total:</td>
+                                <td>{orderTotal}</td>
+                            </tr>
                         </tbody>
                     </table>
+            
                 ) : <h1>Your cart is currently empty</h1>
                 }
             </div>
