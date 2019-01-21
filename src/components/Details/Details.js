@@ -33,9 +33,13 @@ export default class Details extends Component {
     async addToCart() {
         let quantity = this.state.quantity;
         let prod_id = this.state.product.prod_id;
+        let prod_name = this.state.product.prod_name;
+        let prod_price = this.state.product.prod_price;
         let cart = await axios.post('/cart/addItem', {
             prod_id: prod_id,
-            quantity: quantity
+            quantity: quantity,
+            prod_name: prod_name,
+            prod_price: prod_price
         })
         console.log(cart)
     }

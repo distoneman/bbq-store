@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+$font: 'Montserrat', sans-serif;
+$fontColor: #2f2f2f;
+$requiredColor: #ff4d00;
+
+.register-container {
+    font-family: $font;
+    color: $fontColor;
+    width: 50vw;
+    margin-left:25vw;
+    // display: flex;
+    // justify-content: center;
+}
+
+.register-title {
+    font-family: $font;
+    font-weight: 700;
+    margin-bottom: 1em;
+    font-size: 2em;
+    color: $fontColor;
+}
+
+.required {
+    color: $requiredColor;
+    font-size: .8em;
+    margin-bottom: 1em;
+}
+
+.input-label {
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 1em;
+
+    em {
+        color: #ff4d00;
+    }
+}
+
+.input-box {
+    width: 90%;
+    font-size: 1em;
+}

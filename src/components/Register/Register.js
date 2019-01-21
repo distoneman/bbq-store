@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import './register.css';
+import './register.scss';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import { isUndefined, isNullOrUndefined } from 'util';
 
 export default class Register extends Component {
     constructor(props) {
@@ -15,33 +17,40 @@ export default class Register extends Component {
 
     async register() {
         const { firstname, lastname, email, password } = this.state;
-        const res = await axios.post('/auth/register', { 
-            firstname: firstname, 
-            lastname: lastname,
-            email: email, 
-            password: password
-        })
-        if(res.data.loggedIn){
-            alert('You are now registered')
-
-            // const {firstname, lastname, email} = res.data.userData;
-            console.log(firstname)
-            const message = `<h1>Welcome ${firstname} to The BBQ Store</h1>
-                This confirms your registration to The BBQ Store with the
-                email address of ${email}.
-                <p>
-                Thank you for registering.
-                </p>`
-            const res = axios.post('/mail/send', {
-                email: email,
+        if (isNullOrUndefined(firstname) ||
+            isNullOrUndefined(lastname) ||
+            isNullOrUndefined(email) ||
+            isNullOrUndefined(password)) {
+            alert('Complete all fields')
+        } else {
+            const res = await axios.post('/auth/register', {
                 firstname: firstname,
-                subject: `You're now registered at The BBQ Store`,
-                html_message: message
+                lastname: lastname,
+                email: email,
+                password: password
             })
-            this.props.history.push('/')  //redirect
-        }
-        if(res.data.inUse){
-            alert('E-mail already in use try again')
+            if (res.data.loggedIn) {
+                alert('You are now registered')
+
+                // const {firstname, lastname, email} = res.data.userData;
+                console.log(firstname)
+                const message = `<h1>Welcome ${firstname} to The BBQ Store</h1>
+                    This confirms your registration to The BBQ Store with the
+                    email address of ${email}.
+                    <p>
+                    Thank you for registering.
+                    </p>`
+                const res = axios.post('/mail/send', {
+                    email: email,
+                    firstname: firstname,
+                    subject: `You're now registered at The BBQ Store`,
+                    html_message: message
+                })
+                this.props.history.push('/')  //redirect
+            }
+            if (res.data.inUse) {
+                alert('E-mail already in use try again')
+            }
         }
     }
 
@@ -52,20 +61,34 @@ export default class Register extends Component {
     };
 
     render() {
-        return(
-            <div>
-                <div>
+        return (
+            <div className='register-container'>
+                <div className='register-title'>
                     Create an Account
                 </div>
-                <p>First Name:</p>
-                <input type="text" onChange={(e) => this.handleChange('firstname', e.target.value)} />
-                <p>Last Name:</p>
-                <input type="text" onChange={(e) => this.handleChange('lastname', e.target.value)} />
-                <p>E-Mail:</p>
-                <input type="text" onChange={(e) => this.handleChange('email', e.target.value)} />
-                <p>Password:</p>
-                <input type="text" onChange={(e => this.handleChange('password', e.target.value))} />
-                <button onClick={() => this.register()}>Register</button>
+                <div className='required'>*Required Fields</div>
+                <div className='input-label'>First Name:<em>*</em>
+                    <input type="text" className='input-box'
+                        onChange={(e) => this.handleChange('firstname', e.target.value)} />
+                </div>
+                <div className='input-label'>Last Name:<em>*</em>
+                    <input type="text" className='input-box'
+                        onChange={(e) => this.handleChange('lastname', e.target.value)} />
+                </div>
+                <div className='input-label'>E-Mail:<em>*</em>
+                    <input type="text" className='input-box'
+                        onChange={(e) => this.handleChange('email', e.target.value)} />
+                </div>
+                <div className='input-label'>Password:<em>*</em>
+                    <input type="text" className='input-box'
+                        onChange={(e => this.handleChange('password', e.target.value))} />
+                </div>
+                <Button variant="outlined" size="small"
+                    onClick={() => this.register()}>
+                    Register
+                </Button>
+                {/* <Button component={Link} to="/register" variant="outlined" size="small" className='btn-login' > */}
+
             </div>
         )
     }
