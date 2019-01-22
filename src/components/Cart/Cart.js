@@ -58,6 +58,7 @@ export default class Cart extends Component {
         if (this.state.products) {
             cartDisplay = this.state.products.map(product => {
                 var prod_total = product.prod_price * product.quantity;
+                // prod_total = prod_total.toFixed(2);
                 subTotal = subTotal + prod_total;
                 prod_total = prod_total.toLocaleString('us-US', { style: 'currency', currency: 'USD' });
                 var price = product.prod_price.toLocaleString('us-US', { style: 'currency', currency: 'USD' });

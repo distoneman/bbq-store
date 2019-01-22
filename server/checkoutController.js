@@ -9,6 +9,7 @@ module.exports = {
             source: req.body.token.id,
             description: 'Test charge from react app'
         }, function (err, charge) {
+            //database insert & mail
             if (err) return res.sendStatus(500)
             return res.sendStatus(200);
             // if (err && err.type === 'StripeCardError') {
@@ -16,8 +17,15 @@ module.exports = {
             // }
         });
 
-    }
+    },
+    getAllStates: (req, res) => {
+        const db = req.app.get('db');
+        db.states_all().then(response => {
+            res.status(200).send(response)
+        })
+    },
 }
+
 
 
 // const charge = stripe.charges.create({

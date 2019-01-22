@@ -48,3 +48,4 @@ app.delete('/cart/removeProduct/:prod_id', cartCtrl.removeProduct)
 
 //checkout
 app.post('/api/payment', checkoutCtrl.payment);
+app.get('/api/states', checkoutCtrl.getAllStates);
