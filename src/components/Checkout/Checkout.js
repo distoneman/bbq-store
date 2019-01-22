@@ -29,13 +29,19 @@ export default class Checkout extends Component {
         })
         let orderTotal = 0;
         let subTotal = 0;
-        subTotal =  this.state.products.map(product => {
-            var prod_total = product.prod_price * product.quantity;
-            subTotal = Number(subTotal) + Number(prod_total);
-            return (
-                subTotal
-            )
+        // let prod_total = 0;
+
+        this.state.products.forEach(product => {
+            let prod_total = product.prod_price * product.quantity;
+            subTotal += prod_total;
         })
+        // subTotal =  this.state.products.map(product => {
+        //     prod_total = product.prod_price * product.quantity;
+        //     subTotal = Number(subTotal) + Number(prod_total);
+        //     return (
+        //         subTotal
+        //     )
+        // })
         // console.log(subTotal)
         orderTotal = Number(subTotal) + Number(this.state.shipping);
         console.log(orderTotal)
@@ -48,11 +54,16 @@ export default class Checkout extends Component {
         this.setState({ states: states.data })
     }
 
-    onToken =(token) => {
+    onToken = (token) => {
         let convertedAmt = this.state.orderTotal * 100
         token.card = void 0;
         // console.log('token', token);
-        axios.post('/api/payment', { token, amount: convertedAmt }).then(response => {
+        // console.log(this.state.user)
+        axios.post('/api/payment', { 
+            token, 
+            amount: convertedAmt,
+            user_id: this.state.user.id
+        }).then(response => {
             alert('we are in business')
         })
     };

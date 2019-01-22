@@ -47,5 +47,5 @@ app.put('/cart/updateQty', cartCtrl.updateQty);
 app.delete('/cart/removeProduct/:prod_id', cartCtrl.removeProduct)
 
 //checkout
-app.post('/api/payment', checkoutCtrl.payment);
+app.post('/api/payment', checkoutCtrl.checkout);
 app.get('/api/states', checkoutCtrl.getAllStates);
