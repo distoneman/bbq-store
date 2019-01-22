@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import './cart.scss';
 import CartDisplay from './../CartDisplay/CartDisplay';
+import Button from '@material-ui/core/Button';
 
 export default class Cart extends Component {
     constructor(props) {
@@ -11,6 +13,7 @@ export default class Cart extends Component {
         }
         this.updateQuantity = this.updateQuantity.bind(this);
         this.removeProduct = this.removeProduct.bind(this);
+        this.updateOrderTotal = this.updateOrderTotal(this);
 
     }
 
@@ -38,10 +41,14 @@ export default class Cart extends Component {
     }
 
     async removeProduct(id) {
-        console.log('remove product')
+        // console.log('remove product')
         let res = await axios.delete(`/cart/removeProduct/${id}`)
         this.setState({ products: res.data })
         console.log(this.state.products)
+    }
+
+    async updateOrderTotal(orderTotal) {
+        console.log('updateOrderTotal')
     }
 
     render() {
@@ -74,7 +81,7 @@ export default class Cart extends Component {
         console.log(subTotal)
         return (
             <div className='container'>
-                {this.state.products && this.state.products != 0 ? (
+                {this.state.products && this.state.products !== 0 ? (
                     <table className='prod-table'>
                         <thead>
                             <tr>
@@ -108,9 +115,18 @@ export default class Cart extends Component {
                                 <td>Total:</td>
                                 <td>{orderTotal}</td>
                             </tr>
+                            <tr>
+                                <td className="td-hidden"></td>
+                                <td className="td-hidden"></td>
+                                <td className="td-hidden"></td>
+                                <td className="td-hidden" colSpan="2">
+                                    <Button component={Link} to="/checkout" variant="outlined" size="small" className='btn-login' >
+                                        Proceed to Checkout
+                                    </Button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-            
                 ) : <h1>Your cart is currently empty</h1>
                 }
             </div>

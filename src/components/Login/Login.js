@@ -27,8 +27,10 @@ export default class Login extends Component {
         }
         if (res.data.loggedIn) {
             alert('You are now logged in')
+            this.props.history.goBack()
             // this.props.history.push('/')  //redirect
         }
+        // console.log(res.data.userData)
     }
 
 

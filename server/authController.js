@@ -49,4 +49,14 @@ module.exports = {
         }
         res.status(200).send({message: 'logged in', userData: req.session.user, loggedIn: true});
     },
+    getUser: async (req, res) => {
+        if(req.session.user){
+            res.status(200).send({userData: req.session.user, loggedIn: true})
+        } else {
+            res.status(200).send({loggedIn: false})
+        }
+    }
 }
+
+    // getCart: async (req, res) => {
+    //     res.status(200).send(req.session);

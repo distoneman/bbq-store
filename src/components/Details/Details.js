@@ -13,6 +13,7 @@ export default class Details extends Component {
     }
 
     async componentDidMount() {
+        window.scrollTo(0, 0)
         const { prodid } = this.props.match.params;
         let res = await axios.get(`/api/product/${prodid}`).then(res => {
             this.setState({ product: res.data[0] });

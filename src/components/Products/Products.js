@@ -13,6 +13,7 @@ class Products extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         const { catid } = this.props.match.params;
         // console.log(catid);
         axios.get(`/api/products/cat/${catid}`).then(res => {
