@@ -48,11 +48,11 @@ export default class Checkout extends Component {
         this.setState({ states: states.data })
     }
 
-    async onToken(token) {
-        console.log(this.state.orderTotal)
+    onToken =(token) => {
+        let convertedAmt = this.state.orderTotal * 100
         token.card = void 0;
-        console.log('token', token);
-        axios.post('/api/payment', { token, amount: 999 }).then(response => {
+        // console.log('token', token);
+        axios.post('/api/payment', { token, amount: convertedAmt }).then(response => {
             alert('we are in business')
         })
     };
