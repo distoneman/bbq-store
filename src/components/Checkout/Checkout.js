@@ -9,18 +9,28 @@ export default class Checkout extends Component {
         super(props)
         this.state = {
             products: [],
-            user: {},
+            // user: {},
             shipping: 13.95,
             subTotal: 0,
             orderTotal: 0,
-            states: []
+            states: [],
+            firstname: '',
+            address: '',
+            city: '',
+            state: '',
+            zip: ''
         }
     }
 
     async componentDidMount() {
         let user = await axios.get('/auth/getUser');
         if (user.data.loggedIn === true) {
-            this.setState({ user: user.data.userData });
+            this.setState({ 
+                user_id: user.data.userData.id,
+                firstname: user.data.userData.firstname,
+                lastname: user.data.userData.lastname,
+                email: user.data.userData.email
+             });
         } else {
             this.props.history.push('/login')
         }
@@ -59,8 +69,8 @@ export default class Checkout extends Component {
         token.card = void 0;
         // console.log('token', token);
         // console.log(this.state.user)
-        axios.post('/api/payment', { 
-            token, 
+        axios.post('/api/payment', {
+            token,
             amount: convertedAmt,
             user_id: this.state.user.id
         }).then(response => {
@@ -68,7 +78,12 @@ export default class Checkout extends Component {
         })
     };
 
+    handleChange(key, value) {
+        console.log('handleChange')
+    }
+
     render() {
+        console.log(this.state)
         const pkey = 'pk_test_fFtkj2n4MN1eK8zuyJYHvSl7'
         let stateList = this.state.states.map(state => {
             return (
@@ -77,30 +92,36 @@ export default class Checkout extends Component {
         })
         return (
             <div>
-                <h1>
+                <h1 className='checkout-header'>
                     Checkout
                 </h1>
                 <div className='checkout-container'>
                     <div className="cust-details">
                         <h2>Customer Details</h2>
                         <p className='input-label'>First Name:</p>
-                        <input value={this.state.user.firstname} type="text" className="input-box" />
+                        <input onChange={(e) => this.setState({firstname: e.target.value})}
+                            value={this.state.firstname} type="text" className="input-box" />
                         <p className="input-label">Last Name:</p>
-                        <input value={this.state.user.lastname} type="text" className="input-box" />
+                        <input onChange={(e) => this.setState({lastname: e.target.value})}
+                            value={this.state.lastname} type="text" className="input-box" />
                         <p className="input-label">Email:</p>
-                        <input value={this.state.user.email} type="text" className="input-box" />
+                        <input onChange={(e) => this.setState({email: e.target.value})}
+                            value={this.state.email} type="text" className="input-box" />
                         <p className="input-label">Street Address:</p>
-                        <input type="text" className="input-box" />
+                        <input onChange={(e) => this.setState({address: e.target.value})}
+                            type="text" className="input-box" />
                         <p className="input-label">City:</p>
-                        <input type="text" className="city-input-box" />
+                        <input onChange={(e) => this.setState({city: e.target.value})}
+                            type="text" className="city-input-box" />
                         <p className="input-label">State:</p>
-                        <select className='state-input-box' name="state" id="state" >
+                        <select onChange={(e) => this.setState({state: e.target.value})}
+                            className='state-input-box' name="state" id="state" >
                             <option value=""></option>
                             {stateList}
                         </select>
-                        {/* <input type="text" className="state-input-box"/> */}
                         <p className="input-label">Zip:</p>
-                        <input type="text" className="zip-input-box" />
+                        <input onChange={(e) => this.setState({zip: e.target.value})}
+                            type="text" className="zip-input-box" />
 
                     </div>
                     <div className="order-summary">

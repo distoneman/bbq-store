@@ -46,7 +46,7 @@ export default class Register extends Component {
                     subject: `You're now registered at The BBQ Store`,
                     html_message: message
                 })
-                this.props.history.push('/')  //redirect
+                this.props.history.push('/cart')  //redirect
             }
             if (res.data.inUse) {
                 alert('E-mail already in use try again')
@@ -67,26 +67,32 @@ export default class Register extends Component {
                     Create an Account
                 </div>
                 <div className='required'>*Required Fields</div>
-                <div className='input-label'>First Name:<em>*</em>
-                    <input type="text" className='input-box'
-                        onChange={(e) => this.handleChange('firstname', e.target.value)} />
-                </div>
-                <div className='input-label'>Last Name:<em>*</em>
-                    <input type="text" className='input-box'
-                        onChange={(e) => this.handleChange('lastname', e.target.value)} />
-                </div>
-                <div className='input-label'>E-Mail:<em>*</em>
-                    <input type="text" className='input-box'
-                        onChange={(e) => this.handleChange('email', e.target.value)} />
-                </div>
-                <div className='input-label'>Password:<em>*</em>
-                    <input type="text" className='input-box'
-                        onChange={(e => this.handleChange('password', e.target.value))} />
-                </div>
-                <Button variant="outlined" size="small"
-                    onClick={() => this.register()}>
-                    Register
-                </Button>
+                <p className='input-label'>
+                    First Name:<em>*</em>
+                </p>
+                <input type="text" className='input-box'
+                    onChange={(e) => this.handleChange('firstname', e.target.value)} />
+                <p className='input-label'>
+                    Last Name:<em>*</em>
+                </p>
+                <input type="text" className='input-box'
+                    onChange={(e) => this.handleChange('lastname', e.target.value)} />
+                <p className='input-label'>
+                    E-Mail:<em>*</em>
+                </p>
+                <input type="text" className='input-box'
+                    onChange={(e) => this.handleChange('email', e.target.value)} />
+                <p className='input-label'>
+                    Password:<em>*</em>
+                </p>
+                <input type="text" className='input-box'
+                    onChange={(e => this.handleChange('password', e.target.value))} />
+                <p>
+                    <Button variant="outlined" size="small"
+                        onClick={() => this.register()}>
+                        Register
+                    </Button>
+                </p>
                 {/* <Button component={Link} to="/register" variant="outlined" size="small" className='btn-login' > */}
 
             </div>

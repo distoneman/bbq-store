@@ -5,11 +5,17 @@ $fontColor: #2f2f2f;
 $backgroundColor: #f4e6d5;
 
 .checkout-container {
+    font: $font;
+    color: $fontColor;
     width: 90vw;
     // background-color: lightblue;
     display: flex;
     justify-content: space-around;
     margin-left:5vw;
+}
+
+.checkout-header {
+    padding-left:65px;
 }
 
 .cust-details {
