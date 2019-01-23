@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
 
 $font: 'Montserrat', sans-serif;
-$fontColor: #2f2f2f;
+$fontColor: #7c6853;
 
 .container {
     height: 50vh;
@@ -14,8 +14,14 @@ $fontColor: #2f2f2f;
     align-content: stretch;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 50px;
+    padding-top: 30px;
     font-family: $font;
+}
+
+.img-header {
+    display:block;
+    width: 100vw;
+    max-height: 30vh;
 }
 
 .cat-text{

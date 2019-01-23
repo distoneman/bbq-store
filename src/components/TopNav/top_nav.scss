@@ -1,7 +1,15 @@
 // @import url('https://fonts.googleapis.com/css?family=Carter+One');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+$font: 'Montserrat', sans-serif;
+// $fontColor: #2f2f2f;
+$fontColor: #7c6853;
+$backgroundColor: #f4e6d5;
+
 
 .top-bar {
-    background-color: #5e5e5e;
+    font-family: $font;
+    background-color: #63513a;
     color: #ffffff;
     min-height: 30px;
     display: flex;
@@ -22,6 +30,8 @@
 }
 
 .nav{
+    font-family: $font;
+    color: $fontColor;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -48,7 +58,7 @@
 
 .main-nav-element {
     font-size: 18px;
-    color: #000000;
+    color: $fontColor;
     padding-left: 20px;
     padding-right: 20px; 
     border-right: solid 1px;
@@ -67,7 +77,8 @@
 .shop-sub-nav {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    // background-color: #f9f9f9;
+    background-color: $backgroundColor;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -76,7 +87,7 @@
 
 .sub-nav-element {
     float: none;
-    color: black;
+    color: $fontColor;
     padding: 6px 16px 6px 0px;
     display: block;
     text-align: left;
@@ -91,14 +102,14 @@
 
 /* Add a dark background on topnav links and the dropdown button on hover */
 .main-nav-element:hover {
-    background-color: #dddddd;
-    color: black;
+    background-color: $backgroundColor;
+    color: $fontColor;
   }
   
   /* Add a grey background to dropdown links on hover */
 .sub-nav-element:hover {
-    background-color: #dddddd;
-    color: black;
+    background-color: #63513a;
+    color: #ffffff;
   }
 
 /* Show the dropdown menu when the user moves the mouse over the dropdown button */
