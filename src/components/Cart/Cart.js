@@ -48,14 +48,15 @@ export default class Cart extends Component {
     }
 
     async updateOrderTotal(orderTotal) {
-        console.log('updateOrderTotal')
+        // console.log('updateOrderTotal')
     }
 
     render() {
         var cartDisplay;
         var subTotal = 0;
         var orderTotal = 0;
-        if (this.state.products) {
+        console.log(this.state.products.length)
+        if (this.state.products && this.state.products.length !== 0) {
             cartDisplay = this.state.products.map(product => {
                 var prod_total = product.prod_price * product.quantity;
                 // prod_total = prod_total.toFixed(2);
@@ -82,7 +83,7 @@ export default class Cart extends Component {
         console.log(subTotal)
         return (
             <div className='container'>
-                {this.state.products && this.state.products !== 0 ? (
+                {this.state.products && this.state.products.length !== 0 ? (
                     <table className='prod-table'>
                         <thead>
                             <tr>

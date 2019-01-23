@@ -1,5 +1,9 @@
+require('dotenv').config();
 var stripe = require("stripe")("sk_test_Oy5bQHi8b9oHO1eE1cIUX2WN");
 const moment = require('moment');
+const nodemailer = require('nodemailer');
+
+const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
 
 module.exports = {
     checkout: async (req, res) => {
@@ -33,13 +37,37 @@ module.exports = {
                 quantity: product.quantity
             })    
         })
-        // let newOrderItems = await db.order_item_create({
-        //     order_id: newCustOrder.order_id,
-        //     product_id:
-        // })
+        console.log(req.session)
+        // send confirmation e-mail
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: EMAIL_ADDRESS,
+                pass: EMAIL_PASSWORD
+            }
+        })
+        const mailOptions = {
+            from: EMAIL_ADDRESS,
+            to: `${req.session.user.email}`,
+            subject: `test subject`,
+            // text: `${req.body.message}`,
+            html: `test html message`,
+            replyTo: EMAIL_ADDRESS
 
-        // console.log(newCustOrder.order_id)
-        // console.log(req.session.cart)
+            // subject: `${req.body.subject}`,
+            // text: `${req.body.message}`,
+            // html: `${req.body.html_message}`,
+            // replyTo: EMAIL_ADDRESS
+        }
+        transporter.sendMail(mailOptions, function (err, res) {
+            if (err) {
+                console.error('there was an error: ', err);
+            } else {
+                console.log('here is the res: ', res)
+            }
+        })
+        req.session.cart.splice(0, req.session.cart.length);
+        console.log(req.session)
     },
     getAllStates: (req, res) => {
         const db = req.app.get('db');
