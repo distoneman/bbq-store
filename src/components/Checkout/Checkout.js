@@ -45,45 +45,39 @@ export default class Checkout extends Component {
             let prod_total = product.prod_price * product.quantity;
             subTotal += prod_total;
         })
-        // subTotal =  this.state.products.map(product => {
-        //     prod_total = product.prod_price * product.quantity;
-        //     subTotal = Number(subTotal) + Number(prod_total);
-        //     return (
-        //         subTotal
-        //     )
-        // })
-        // console.log(subTotal)
         orderTotal = Number(subTotal) + Number(this.state.shipping);
-        console.log(orderTotal)
         this.setState({
             subTotal: subTotal,
             orderTotal: orderTotal
         })
-        console.log(this.state)
         let states = await axios.get('/api/states')
         this.setState({ states: states.data })
     }
 
     onToken = (token) => {
+        const message = `<h1>${this.state.firstname}</h1>
+        Thank you for your order.
+        <p>
+        Your friends at The BBQ Supply Store
+        </p>`
+
         let convertedAmt = this.state.orderTotal * 100
         token.card = void 0;
-        // console.log('token', token);
-        // console.log(this.state.user)
         axios.post('/api/payment', {
             token,
             amount: convertedAmt,
-            user_id: this.state.user.id
+            user_id: this.state.user_id,
+            html_message: message
         }).then(response => {
             alert('we are in business')
         })
     };
 
-    handleChange(key, value) {
-        console.log('handleChange')
-    }
+    // handleChange(key, value) {
+    //     console.log('handleChange')
+    // }
 
     render() {
-        console.log(this.state)
         const pkey = 'pk_test_fFtkj2n4MN1eK8zuyJYHvSl7'
         let stateList = this.state.states.map(state => {
             return (

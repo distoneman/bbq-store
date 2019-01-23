@@ -12,7 +12,7 @@ module.exports = {
             amount: req.body.amount, // amount in cents, again
             currency: 'usd',
             source: req.body.token.id,
-            description: 'Test charge from react app'
+            description: 'The BBQ Supply Store'
         }, function (err, charge) {
             //database insert & mail
             if (err) return res.sendStatus(500)
@@ -49,15 +49,10 @@ module.exports = {
         const mailOptions = {
             from: EMAIL_ADDRESS,
             to: `${req.session.user.email}`,
-            subject: `test subject`,
+            subject: `Order Confirmation from The BBQ Supply Store`,
             // text: `${req.body.message}`,
-            html: `test html message`,
+            html: `${req.body.html_message}`,
             replyTo: EMAIL_ADDRESS
-
-            // subject: `${req.body.subject}`,
-            // text: `${req.body.message}`,
-            // html: `${req.body.html_message}`,
-            // replyTo: EMAIL_ADDRESS
         }
         transporter.sendMail(mailOptions, function (err, res) {
             if (err) {
@@ -67,7 +62,6 @@ module.exports = {
             }
         })
         req.session.cart.splice(0, req.session.cart.length);
-        console.log(req.session)
     },
     getAllStates: (req, res) => {
         const db = req.app.get('db');

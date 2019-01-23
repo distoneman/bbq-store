@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './top_nav.scss'
+import logo from './../../images/logo2.png'
 
 function TopNav(props) {
     return (
@@ -16,7 +17,8 @@ function TopNav(props) {
             </div>
             <div className='nav'>
                 <div className='logo'>
-                    The BBQ Supply Store
+                    <img className='logo-image' src={logo} alt="The BBQ Supply Store"/>
+                    {/* The BBQ Supply Store */}
                 </div>
                 <div>
                     <ul className='main-nav'>

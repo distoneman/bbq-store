@@ -55,7 +55,7 @@ export default class Cart extends Component {
         var cartDisplay;
         var subTotal = 0;
         var orderTotal = 0;
-        console.log(this.state.products.length)
+        // console.log(this.state.products.length)
         if (this.state.products && this.state.products.length !== 0) {
             cartDisplay = this.state.products.map(product => {
                 var prod_total = product.prod_price * product.quantity;
