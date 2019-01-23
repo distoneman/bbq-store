@@ -45,3 +45,20 @@ $fontColor: #2f2f2f;
     width: 2em;
     text-align: center;
 }
+
+.bread-container {
+    font-family: $font;
+    color: $fontColor;
+    padding-left: 2em;
+
+}
+
+.bread {
+    font-size: .8em;
+    padding-left: .5em;
+}
+
+.bread-link {
+    color: $fontColor;
+    text-decoration: none;
+}

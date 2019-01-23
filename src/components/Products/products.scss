@@ -1,7 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+$font: 'Montserrat', sans-serif;
+$fontColor: #2f2f2f;
+
 .container {
     display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: flex-start;    
+}
+
+.bread-container {
+    font-family: $font;
+    color: $fontColor;
+    padding-left: 2em;
+
+}
+
+.bread {
+    font-size: .8em;
+    padding-left: .5em;
+}
+
+.bread-link {
+    color: $fontColor;
+    text-decoration: none;
 }

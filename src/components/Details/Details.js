@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './details.scss'
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 export default class Details extends Component {
@@ -18,6 +19,7 @@ export default class Details extends Component {
         let res = await axios.get(`/api/product/${prodid}`).then(res => {
             this.setState({ product: res.data[0] });
         })
+        console.log(this.state.product)
     }
 
     updateQuantity(operator) {
@@ -47,10 +49,21 @@ export default class Details extends Component {
 
 
     render() {
-        const { prod_name, prod_desc, prod_price, prod_size, prod_image } = this.state.product;
+        const { prod_name, prod_desc, prod_price, prod_size, prod_image, prod_category_id, category_name } = this.state.product;
         if (prod_price) var price = prod_price.toLocaleString('us-US', { style: 'currency', currency: 'USD' })
         return (
             <div>
+                <div className='bread-container'>
+                    <Link to='/' className='bread-link'>
+                        <span className='bread'>Home</span>
+                    </Link>
+                    <span className="bread"> > </span>
+                    <Link to={`/products/${prod_category_id}`} className='bread-link'>
+                        <span className="bread">{category_name}</span>
+                    </Link>
+                    <span className="bread"> > </span>
+                    <span className="bread">{prod_name}</span>
+                </div>
                 <div className='product-container'>
                     <div>
                         <img src={prod_image} className='image' alt={prod_name} />
