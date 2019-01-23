@@ -19,7 +19,7 @@ export default class Details extends Component {
         let res = await axios.get(`/api/product/${prodid}`).then(res => {
             this.setState({ product: res.data[0] });
         })
-        console.log(this.state.product)
+        // console.log(this.state.product)
     }
 
     updateQuantity(operator) {
