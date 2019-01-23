@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
-// import stripe from './stripeKey';
+import swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss'
 import './checkout.scss';
 
 export default class Checkout extends Component {
@@ -25,12 +26,12 @@ export default class Checkout extends Component {
     async componentDidMount() {
         let user = await axios.get('/auth/getUser');
         if (user.data.loggedIn === true) {
-            this.setState({ 
+            this.setState({
                 user_id: user.data.userData.id,
                 firstname: user.data.userData.firstname,
                 lastname: user.data.userData.lastname,
                 email: user.data.userData.email
-             });
+            });
         } else {
             this.props.history.push('/login')
         }
@@ -69,7 +70,14 @@ export default class Checkout extends Component {
             user_id: this.state.user_id,
             html_message: message
         }).then(response => {
-            alert('we are in business')
+            // alert('we are in business')
+            swal.fire({
+                type: 'success',
+                title: `${this.state.firstname}`,
+                text: `Thank You for your payment of ${this.state.orderTotal.toLocaleString('us-US', { style: 'currency', currency: 'USD' })}`,
+                confirmButtonText: "Continue Shopping"
+            })
+            this.props.history.push('/')  //redirect
         })
     };
 
@@ -93,28 +101,28 @@ export default class Checkout extends Component {
                     <div className="cust-details">
                         <h2>Customer Details</h2>
                         <p className='input-label'>First Name:</p>
-                        <input onChange={(e) => this.setState({firstname: e.target.value})}
+                        <input onChange={(e) => this.setState({ firstname: e.target.value })}
                             value={this.state.firstname} type="text" className="input-box" />
                         <p className="input-label">Last Name:</p>
-                        <input onChange={(e) => this.setState({lastname: e.target.value})}
+                        <input onChange={(e) => this.setState({ lastname: e.target.value })}
                             value={this.state.lastname} type="text" className="input-box" />
                         <p className="input-label">Email:</p>
-                        <input onChange={(e) => this.setState({email: e.target.value})}
+                        <input onChange={(e) => this.setState({ email: e.target.value })}
                             value={this.state.email} type="text" className="input-box" />
                         <p className="input-label">Street Address:</p>
-                        <input onChange={(e) => this.setState({address: e.target.value})}
+                        <input onChange={(e) => this.setState({ address: e.target.value })}
                             type="text" className="input-box" />
                         <p className="input-label">City:</p>
-                        <input onChange={(e) => this.setState({city: e.target.value})}
+                        <input onChange={(e) => this.setState({ city: e.target.value })}
                             type="text" className="city-input-box" />
                         <p className="input-label">State:</p>
-                        <select onChange={(e) => this.setState({state: e.target.value})}
+                        <select onChange={(e) => this.setState({ state: e.target.value })}
                             className='state-input-box' name="state" id="state" >
                             <option value=""></option>
                             {stateList}
                         </select>
                         <p className="input-label">Zip:</p>
-                        <input onChange={(e) => this.setState({zip: e.target.value})}
+                        <input onChange={(e) => this.setState({ zip: e.target.value })}
                             type="text" className="zip-input-box" />
 
                     </div>

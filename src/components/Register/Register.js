@@ -3,6 +3,8 @@ import './register.scss';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { isNullOrUndefined } from 'util';
+import swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss'
 
 export default class Register extends Component {
     constructor(props) {
@@ -21,7 +23,14 @@ export default class Register extends Component {
             isNullOrUndefined(lastname) ||
             isNullOrUndefined(email) ||
             isNullOrUndefined(password)) {
-            alert('Complete all fields')
+            // alert('Complete all fields')
+            await swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'You must complete all of the required fields',
+                confirmButtonText: "Try Again"
+                // footer: '<a href>Why do I have this issue?</a>'
+              })
         } else {
             const res = await axios.post('/auth/register', {
                 firstname: firstname,
@@ -30,10 +39,15 @@ export default class Register extends Component {
                 password: password
             })
             if (res.data.loggedIn) {
-                alert('You are now registered')
-
-                // const {firstname, lastname, email} = res.data.userData;
-                console.log(firstname)
+                // alert('You are now registered')
+                await swal.fire({
+                    type: 'success',
+                    title: `Welcome ${firstname}`,
+                    text: "Your are now registered",
+                    confirmButtonText: "Go Shopping"
+                  })
+                    // const {firstname, lastname, email} = res.data.userData;
+                // console.log(firstname)
                 const message = `<h1>Welcome ${firstname} to The BBQ Store</h1>
                     This confirms your registration to The BBQ Store with the
                     email address of ${email}.
@@ -49,7 +63,15 @@ export default class Register extends Component {
                 this.props.history.push('/cart')  //redirect
             }
             if (res.data.inUse) {
-                alert('E-mail already in use try again')
+                // alert('E-mail already in use try again')
+                await swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Email already in use try logging in',
+                    confirmButtonText: "Continue"
+                    // footer: '<a href>Why do I have this issue?</a>'
+                  })
+                  this.props.history.push('/login')  //redirect
             }
         }
     }

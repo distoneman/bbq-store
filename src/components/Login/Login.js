@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './login.scss';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 import Button from '@material-ui/core/Button';
 
 export default class Login extends Component {
@@ -22,33 +23,30 @@ export default class Login extends Component {
         })
         if (res.data.noEmail) {
             // alert('Email not found, try again or register')
-            swal({
+            await swal.fire({
+                type: 'error',
                 title: `Email Not Found`,
                 text: "Try Again or Register",
-                icon: "error",
-                button: "Try Again",
-              });
-
+                confirmButtonText: "Try Again"
+              })
         }
         if (res.data.wrongPass) {
             // alert('Wrong Password')
-            swal({
-                title: `Password Incorrect`,
-                // text: "Your are now logged in",
-                icon: "error",
-                button: "Try Again",
-              });
-
+            await swal.fire({
+                type: 'error',
+                title: `Oops..`,
+                text: "Incorrect Password",
+                confirmButtonText: "Try Again"
+              })
         }
         if (res.data.loggedIn) {
             // alert('You are now logged in')
-            console.log(res.data.userData.firstname)
-            swal({
+            await swal.fire({
+                type: 'success',
                 title: `Welcome ${res.data.userData.firstname}`,
                 text: "Your are now logged in",
-                icon: "success",
-                button: "Go Shopping",
-              });
+                confirmButtonText: "Go Shopping"
+              })
             this.props.history.goBack()
             // this.props.history.push('/')  //redirect
         }

@@ -19,11 +19,7 @@ export default class Cart extends Component {
 
     async componentDidMount() {
         let res = await axios.get(`/cart/session`).then(res => {
-            // console.log(res.data.cart)
-            // console.log(res.data.user)
             this.setState({ products: res.data.cart });
-
-            // console.log(this.state.products)
         })
     }
 
@@ -80,7 +76,6 @@ export default class Cart extends Component {
             orderTotal = orderTotal.toLocaleString('us-US', { style: 'currency', currency: 'USD' });
 
         }
-        console.log(subTotal)
         return (
             <div className='container'>
                 {this.state.products && this.state.products.length !== 0 ? (
