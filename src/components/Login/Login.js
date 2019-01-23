@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './login.scss';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 import Button from '@material-ui/core/Button';
 
 export default class Login extends Component {
@@ -14,20 +14,41 @@ export default class Login extends Component {
         }
     }
 
-    async login() {
+    login = async () => {
         const { email, password } = this.state;
         const res = await axios.post('/auth/login', {
             email: email,
             password: password,
         })
         if (res.data.noEmail) {
-            alert('Email not found, try again or register')
+            // alert('Email not found, try again or register')
+            swal({
+                title: `Email Not Found`,
+                text: "Try Again or Register",
+                icon: "error",
+                button: "Try Again",
+              });
+
         }
         if (res.data.wrongPass) {
-            alert('Wrong Password')
+            // alert('Wrong Password')
+            swal({
+                title: `Password Incorrect`,
+                // text: "Your are now logged in",
+                icon: "error",
+                button: "Try Again",
+              });
+
         }
         if (res.data.loggedIn) {
-            alert('You are now logged in')
+            // alert('You are now logged in')
+            console.log(res.data.userData.firstname)
+            swal({
+                title: `Welcome ${res.data.userData.firstname}`,
+                text: "Your are now logged in",
+                icon: "success",
+                button: "Go Shopping",
+              });
             this.props.history.goBack()
             // this.props.history.push('/')  //redirect
         }
