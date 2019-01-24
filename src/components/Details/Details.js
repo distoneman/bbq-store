@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './details.scss'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
+import { updateCartItems } from './../../ducks/reducer.js'
 
-export default class Details extends Component {
+
+class Details extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -44,6 +47,8 @@ export default class Details extends Component {
             prod_name: prod_name,
             prod_price: prod_price
         })
+        // console.log(cart)
+        this.props.updateCartItems(cart.data.length);
         // console.log(cart)
     }
 
@@ -105,3 +110,15 @@ export default class Details extends Component {
         )
     }
 }
+
+function mapStateToProps(rstate) {
+    const { numItems } = rstate;
+    return {
+        numItems
+    }
+}
+
+export default connect(mapStateToProps,
+    {
+        updateCartItems
+    })(Details); 

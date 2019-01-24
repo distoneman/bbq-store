@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateCartItems } from './../../ducks/reducer.js'
 import './cart.scss';
 import CartDisplay from './../CartDisplay/CartDisplay';
 import Button from '@material-ui/core/Button';
 
-export default class Cart extends Component {
+class Cart extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,6 +23,7 @@ export default class Cart extends Component {
         let res = await axios.get(`/cart/session`).then(res => {
             this.setState({ products: res.data.cart });
         })
+        this.props.updateCartItems(this.state.products.length)
     }
 
     async updateQuantity(operator, id, quantity) {
@@ -41,6 +44,7 @@ export default class Cart extends Component {
         let res = await axios.delete(`/cart/removeProduct/${id}`)
         this.setState({ products: res.data })
         console.log(this.state.products)
+        this.props.updateCartItems(res.data.length)
     }
 
     async updateOrderTotal(orderTotal) {
@@ -130,3 +134,14 @@ export default class Cart extends Component {
         )
     }
 }
+
+function mapStateToProps({ numItems }) {
+    return {
+        numItems
+    }
+}
+
+export default connect(mapStateToProps,
+    {
+        updateCartItems
+    })(Cart);

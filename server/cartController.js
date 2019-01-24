@@ -23,6 +23,7 @@ module.exports = {
                 prod_price: req.body.prod_price
              })
         }
+        // console.log(req.session.cart)
         res.status(200).send(req.session.cart)
     },
     
