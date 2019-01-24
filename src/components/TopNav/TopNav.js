@@ -10,7 +10,6 @@ class TopNav extends Component {
     render() {
         return (
             <div>
-                <p>cart items = {this.props.cartItems}</p>
                 <div className='top-bar'>
                     <div className="top-element">Call 555-555-5555</div>
                     <Link to='/account' className='top-element'>
