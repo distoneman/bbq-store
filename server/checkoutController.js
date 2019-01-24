@@ -13,31 +13,26 @@ module.exports = {
             currency: 'usd',
             source: req.body.token.id,
             description: 'The BBQ Supply Store'
-        }, function (err, charge) {
+        }, 
+        async function (err, charge) {
             //database insert & mail
-            if (err) return res.sendStatus(500)
-            return res.sendStatus(200);
-            // if (err && err.type === 'StripeCardError') {
-            //   // The card has been declined
-            // }
-        });
-        // insert into cust_order table
-        const db = req.app.get('db')
-        const cust_id = req.body.user_id
-        const now = moment().format('MM/DD/YY')
-        let newCustOrder = await db.cust_order_create({
-            cust_id: cust_id,
-            order_date: now
-        })
-        let lineItems = await req.session.cart.map(product => {
-            let itemList = db.order_item_create({
-                order_id: newCustOrder[0].order_id,
-                product_id: product.prod_id,
-                prod_price: product.prod_price,
-                quantity: product.quantity
-            })    
-        })
-        // console.log(req.session)
+            // insert into cust_order table
+            const db = req.app.get('db')
+            const cust_id = req.body.user_id
+            const now = moment().format('MM/DD/YY')
+            let newCustOrder = await db.cust_order_create({
+                cust_id: cust_id,
+                order_date: now
+            })
+            let lineItems = await req.session.cart.map(product => {
+                let itemList = db.order_item_create({
+                    order_id: newCustOrder[0].order_id,
+                    product_id: product.prod_id,
+                    prod_price: product.prod_price,
+                    quantity: product.quantity
+                })    
+            })
+
         // send confirmation e-mail
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -61,7 +56,17 @@ module.exports = {
                 // console.log('here is the res: ', res)
             }
         })
-        req.session.cart.splice(0, req.session.cart.length);
+        await req.session.cart.splice(0, req.session.cart.length);
+
+
+            if (err) return res.sendStatus(500)
+            return res.status(200).send(req.session.cart);
+            // if (err && err.type === 'StripeCardError') {
+            //   // The card has been declined
+            // }
+        });
+
+        // console.log(req.session)
     },
     getAllStates: (req, res) => {
         const db = req.app.get('db');

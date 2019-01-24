@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import './storeFront.scss'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import './storeFront.scss';
 import grill from './../../images/classic-red-cart-poly_03_1-450x450.jpg';
 import smoker from './../../images/traegerjr-330x330.jpg';
 import rubs from './../../images/Honey_Hog.jpg';
 import sauce from './../../images/Blues_Hog_Original_sauce.jpg';
 import headImage from './../../images/headImage.jpg'
 
-export default class StoreFront extends Component {
+class StoreFront extends Component {
     // constructor(props) {
     //     super(props)
     // }
 
     render() {
+        console.log(this.props.cartItems)
         return (
             <div>
                 <div>
@@ -52,3 +54,11 @@ export default class StoreFront extends Component {
         )
     }
 }
+
+function mapStateToProps({ cartItems }) {
+    return {
+        cartItems
+    }
+}
+
+export default connect(mapStateToProps)(StoreFront)

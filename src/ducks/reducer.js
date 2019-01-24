@@ -7,7 +7,7 @@ const RESET_STATE = 'RESET_STATE';
 
 
 export default function reducer(state = initialState, action){
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
         case UPDATE_CART_ITEMS:
             return Object.assign({}, state, { cartItems: action.payload });
@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action){
 }
 
 export function updateCartItems(numItems) {
-    console.log('function update hit', numItems)
+    // console.log('function update hit', numItems)
     return {
         type: UPDATE_CART_ITEMS,
         payload: numItems
