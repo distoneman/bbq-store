@@ -126,8 +126,25 @@ export default class Checkout extends Component {
                             type="text" className="zip-input-box" />
 
                     </div>
-                    <div className="order-summary">
+                    <div className="order-summary-container">
                         <h2>Order Summary</h2>
+                        <table className='order-summary-table'>
+                            <tbody>
+
+                                <tr>
+                                    <td className='summary-data'>Subtotal:</td>
+                                    <td className='summary-data'>${this.state.subTotal.toFixed(2)}</td>
+                                </tr>
+                                <tr>
+                                    <td className='summary-data'>Shipping:</td>
+                                    <td className='summary-data'>${this.state.shipping}</td>
+                                </tr>
+                                <tr>
+                                    <td className='summary-data'>Order Total:</td>
+                                    <td className='summary-data'>${this.state.orderTotal.toFixed(2)}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <StripeCheckout
                             token={this.onToken}
                             stripeKey={pkey}

@@ -26,12 +26,6 @@ $backgroundColor: #f4e6d5;
     // height: 20px;
 }
 
-.order-summary {
-    border: solid 1px black;
-    width: 30vw;
-    padding-left: 10px;
-    // padding-bottom: 10px;
-}
 
 .input-label {
     font-size: .75em;
@@ -56,4 +50,27 @@ $backgroundColor: #f4e6d5;
 .zip-input-box {
     @extend .input-box;
     width: 7em;
+}
+
+.order-summary-container {
+    font-family: $font;
+    color: $fontColor;
+    border: solid 1px black;
+    width: 30vw;
+    padding-left: 10px;
+    // padding-bottom: 10px;
+}
+
+.order-summary-table {
+    border: solid 1px;
+    border-collapse: collapse;
+    padding: .5em;
+    margin-bottom: .5em;
+}
+
+.summary-data {
+    border: solid 1px;
+    padding: .5em;
+    text-align: right;
+
 }

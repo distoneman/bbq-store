@@ -8,7 +8,6 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Checkout from './components/Checkout/Checkout';
 import Recipes from './components/Recipes/Recipes';
-import Confirmation from './components/Confirmation/Confirmation';
 import AccountInfo from './components/AccountInfo/AccountInfo'
 
 export default (
@@ -21,7 +20,6 @@ export default (
         <Route path='/register' component={Register} />
         <Route path='/checkout' component={Checkout} />
         <Route path='/recipes' component={Recipes} />
-        <Route path='/confirmation' component={Confirmation} />
         <Route path='/account' component={AccountInfo} />
     </Switch>
 )

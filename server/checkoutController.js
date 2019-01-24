@@ -8,7 +8,7 @@ const { EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
 module.exports = {
     checkout: async (req, res) => {
         // const chargeAmt = req.body.amount;
-        const charge = stripe.charges.create({
+        const charge = await stripe.charges.create({
             amount: req.body.amount, // amount in cents, again
             currency: 'usd',
             source: req.body.token.id,
@@ -37,7 +37,7 @@ module.exports = {
                 quantity: product.quantity
             })    
         })
-        console.log(req.session)
+        // console.log(req.session)
         // send confirmation e-mail
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -58,7 +58,7 @@ module.exports = {
             if (err) {
                 console.error('there was an error: ', err);
             } else {
-                console.log('here is the res: ', res)
+                // console.log('here is the res: ', res)
             }
         })
         req.session.cart.splice(0, req.session.cart.length);
