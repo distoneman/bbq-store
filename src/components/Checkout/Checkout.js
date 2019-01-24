@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import { updateCartItems } from './../../ducks/reducer.js';
 import StripeCheckout from 'react-stripe-checkout';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
 import './checkout.scss';
 
-export default class Checkout extends Component {
+class Checkout extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -55,7 +57,7 @@ export default class Checkout extends Component {
         this.setState({ states: states.data })
     }
 
-    onToken = (token) => {
+    onToken = async (token) => {
         const message = `<h1>${this.state.firstname}</h1>
         Thank you for your order.
         <p>
@@ -64,21 +66,23 @@ export default class Checkout extends Component {
 
         let convertedAmt = this.state.orderTotal * 100
         token.card = void 0;
-        axios.post('/api/payment', {
+        let res = await axios.post('/api/payment', {
             token,
             amount: convertedAmt,
             user_id: this.state.user_id,
             html_message: message
-        }).then(response => {
-            // alert('we are in business')
-            swal.fire({
-                type: 'success',
-                title: `${this.state.firstname}`,
-                text: `Thank You for your payment of ${this.state.orderTotal.toLocaleString('us-US', { style: 'currency', currency: 'USD' })}`,
-                confirmButtonText: "Continue Shopping"
-            })
-            this.props.history.push('/')  //redirect
         })
+        // .then(response => {
+        // alert('we are in business')
+        this.props.updateCartItems(res.data.length);
+        swal.fire({
+            type: 'success',
+            title: `${this.state.firstname}`,
+            text: `Thank You for your payment of ${this.state.orderTotal.toLocaleString('us-US', { style: 'currency', currency: 'USD' })}`,
+            confirmButtonText: "Continue Shopping"
+        })
+        this.props.history.push('/')  //redirect
+        // })
     };
 
     // handleChange(key, value) {
@@ -156,3 +160,15 @@ export default class Checkout extends Component {
         )
     }
 }
+
+function mapStateToProps(rstate) {
+    const { numItems } = rstate;
+    return {
+        numItems
+    }
+}
+
+export default connect(mapStateToProps,
+    {
+        updateCartItems
+    })(Checkout); 
