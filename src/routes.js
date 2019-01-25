@@ -9,7 +9,6 @@ import Register from './components/Register/Register';
 import Checkout from './components/Checkout/Checkout';
 import Recipes from './components/Recipes/Recipes';
 import AccountInfo from './components/AccountInfo/AccountInfo'
-import TopNav2 from './components/TopNav2/TopNav2';
 
 export default (
     <Switch>

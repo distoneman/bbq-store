@@ -21,6 +21,8 @@ app.use(
     })
 )
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 massive(CONNECTION_STRING).then(connection => {
     app.set('db', connection)
     app.listen(SERVER_PORT, () => console.log(`Server running on port ${SERVER_PORT}`))
@@ -49,3 +51,4 @@ app.delete('/cart/removeProduct/:prod_id', cartCtrl.removeProduct)
 //checkout
 app.post('/api/payment', checkoutCtrl.checkout);
 app.get('/api/states', checkoutCtrl.getAllStates);
+
