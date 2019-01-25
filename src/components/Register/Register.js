@@ -107,7 +107,7 @@ export default class Register extends Component {
                 <p className='input-label'>
                     Password:<em>*</em>
                 </p>
-                <input type="text" className='input-box'
+                <input type="text" className='input-box' type="password"
                     onChange={(e => this.handleChange('password', e.target.value))} />
                 <p>
                     <Button variant="outlined" size="small"
