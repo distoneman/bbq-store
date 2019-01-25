@@ -69,7 +69,6 @@ export default class Register extends Component {
                     title: 'Oops...',
                     text: 'Email already in use try logging in',
                     confirmButtonText: "Continue"
-                    // footer: '<a href>Why do I have this issue?</a>'
                   })
                   this.props.history.push('/login')  //redirect
             }
@@ -115,8 +114,6 @@ export default class Register extends Component {
                         Register
                     </Button>
                 </p>
-                {/* <Button component={Link} to="/register" variant="outlined" size="small" className='btn-login' > */}
-
             </div>
         )
     }

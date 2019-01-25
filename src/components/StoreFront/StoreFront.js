@@ -18,20 +18,24 @@ class StoreFront extends Component {
         return (
             <div>
                 <div>
-                    <img className='img-header' src={headImage} alt="steak"/>
+                    <img className='img-header' src={headImage} alt="steak" />
                 </div>
                 <div className='container'>
                     <div className='categories'>
-                        <img className='img-cat' src={smoker} alt="" />
-                        <p className='cat-text'>
-                            Smokers
+                        <Link to='/products/2' className='prod-links'>
+                            <img className='img-cat' src={smoker} alt="" />
+                            <p className='cat-text'>
+                                Smokers
                         </p>
+                        </Link>
                     </div>
                     <div>
-                        <img className='img-cat' src={grill} alt="" />
-                        <p className='cat-text'>
-                            Grills
+                        <Link to='/products/1' className='prod-links'>
+                            <img className='img-cat' src={grill} alt="" />
+                            <p className='cat-text'>
+                                Grills
                         </p>
+                        </Link>
                     </div>
                     <div>
                         <Link to='/products/3' className='prod-links'>
