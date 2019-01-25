@@ -54,9 +54,11 @@ $backgroundColor: #f4e6d5;
 .main-nav {
     height: 60px;
     min-height: 30px;
+    padding-right: .5em
 }
 
 .main-nav-element {
+    height: 25px;
     font-size: 18px;
     color: $fontColor;
     padding-left: 20px;
