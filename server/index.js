@@ -6,6 +6,7 @@ const authCtrl = require('./authController.js');
 const mailCtrl = require('./mailController.js');
 const cartCtrl = require('./cartController.js');
 const checkoutCtrl = require('./checkoutController.js');
+const accInfoController = require('./accInfoController');
 const session = require('express-session');
 
 const { SERVER_PORT, CONNECTION_STRING, SECRET, EMAIL_ADDRESS, EMAIL_PASSWORD } = process.env;
@@ -52,3 +53,6 @@ app.delete('/cart/removeProduct/:prod_id', cartCtrl.removeProduct)
 app.post('/api/payment', checkoutCtrl.checkout);
 app.get('/api/states', checkoutCtrl.getAllStates);
 
+//account information
+app.get('/api/allOrders/:user_id', accInfoController.allOrders);
+app.get('/api/orderDetail/:order_id', accInfoController.oneOrder);
