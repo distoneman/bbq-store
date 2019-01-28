@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './recipes.css'
+import './recipes.scss'
 
 export default class Recipes extends Component {
     // constructor(props) {
@@ -9,7 +9,7 @@ export default class Recipes extends Component {
     render() {
         return (
             <div>
-                Recipes
+                <h1>Coming Soon</h1>
             </div>
         )
     }

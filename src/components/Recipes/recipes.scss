@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+$font: 'Montserrat', sans-serif;
+$fontColor: #2f2f2f;
+$requiredColor: #ff4d00;
+
+h1 {
+    font-family: $font;
+    color: $fontColor;
+    text-align: center;
+}
