@@ -65,7 +65,7 @@ class Checkout extends Component {
         Your friends at The BBQ Supply Store
         </p>`
 
-        let convertedAmt = this.state.orderTotal * 100
+        let convertedAmt = (this.state.orderTotal * 100).toFixed(0)
         token.card = void 0;
         let res = await axios.post('/api/payment', {
             token,
