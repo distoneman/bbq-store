@@ -55,6 +55,7 @@ class Checkout extends Component {
         })
         let states = await axios.get('/api/states')
         this.setState({ states: states.data })
+        console.log((this.state.orderTotal * 100).toFixed(2))
     }
 
     onToken = async (token) => {
